@@ -1,11 +1,46 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003"
-         DefaultTargets="Bygg">
+         DefaultTargets="Bye">
 
+  <PropertyGroup>
+    <Name>$(Fullname) Homer</Name>
+    <Fullname>$(Name) Simpson</Fullname>
+    <DataPath>$(MSBuildProjectDirectory)\Data\*.txt</DataPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Files Include="$(DataPath)" />
+  </ItemGroup>
+
+  <Target Name="ListData">
+    <Message Text="@(Files)" />
+    <Message Text="@(Files->'%(ModifiedTime)')" />
+  </Target>
+
+  <ItemGroup>
+    <CoolMovie Include="Equalizer 2">
+      <Rating>Cool</Rating>
+    </CoolMovie>
+    <CoolMovie Include="John Wick">
+      <Rating>Awesome</Rating>
+    </CoolMovie>
+  </ItemGroup>
+
+  <Target Name="Movies">
+    <Message Text="@(CoolMovie) - Rating: @(CoolMovie->'%(Rating)')" />
+  </Target>
+  
+  <Target Name="ReservedProps">
+    <Message Text="MSBuildProjectDirectory : $(MSBuildProjectDirectory)"></Message>
+  </Target>
+  
+  <Target Name="Test">
+    <Message Importance="low" Text="Test!" />
+  </Target>
   <Target Name="Bye">
-    <Message Text="Bye" />
+    <Message Importance="high" Text="Bye" />
   </Target>
   <Target Name="Bygg">
-    <Message Text="Du har bygget noe shit! haha xD" />
+    <Message Importance="normal" Text="Du har bygget noe shit! $(Fullname) $(Name) haha xD" />
   </Target>
 </Project>
