@@ -1,0 +1,34 @@
+ms build
+
+GENERELT
+=======================
+interpreter tool slik som maven, xml, generelt, etc
+Brukt veldig mye av VS men har egentlig ingenting med det å gjøre
+Kan brukes til alt
+
+
+TOOLS
+================
+Win+"dev" får opp VS command prompt
+
+
+Syntaks og struktur
+========================
+
+Et Target er bare et sett med instruksjoner
+
+Tasks.... custom, <Message> "echo", etc....
+
+
+Kjører første som default
+msbuild DoSomething.msbuild /Target:Bygg
+
+Responsefil ".rsp"
+===============
+Kan inneholde targets
+msbuild DoSomething.msbuild @responsefile.rsp /v:d
+
+
+Kan gruppere input parametere, feks en responsfil for alle kommandoer du ønsker å kjøre ved feilsøking.
+Kan dermed slå på og av debug uavhengig av hvilken target man ønsker å kjøre
+
